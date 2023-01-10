@@ -12,13 +12,22 @@ export class DevelopersService {
     private developerRepository: Repository<Developer>,
   ) {}
 
-  findAll(): Promise<Developer[]> {
-    return this.developerRepository.find({
+  async findAll(roleId?: number, projectId?: number): Promise<Developer[]> {
+    const developers = await this.developerRepository.find({
       relations: {
         roles: true,
         projects: true,
       },
     });
+    return developers
+      .filter((developer) =>
+        roleId ? developer.roles.some((role) => role.id === roleId) : true,
+      )
+      .filter((developer) =>
+        projectId
+          ? developer.projects.some((project) => project.id === projectId)
+          : true,
+      );
   }
 
   findOne(id: number): Promise<Developer> {

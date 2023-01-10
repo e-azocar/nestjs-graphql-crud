@@ -9,8 +9,11 @@ export class DevelopersResolver {
   constructor(private developersService: DevelopersService) {}
 
   @Query(() => [Developer])
-  developers() {
-    return this.developersService.findAll();
+  developers(
+    @Args('roleId', { type: () => Int, nullable: true }) roleId: number,
+    @Args('projectId', { type: () => Int, nullable: true }) projectId: number,
+  ) {
+    return this.developersService.findAll(roleId, projectId);
   }
 
   @Query(() => Developer)
