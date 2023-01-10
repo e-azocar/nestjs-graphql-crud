@@ -1,5 +1,5 @@
-import { Field, InputType } from '@nestjs/graphql';
-import { IsNotEmpty, IsEmail } from 'class-validator';
+import { Field, InputType, Int } from '@nestjs/graphql';
+import { IsNotEmpty, IsEmail, IsArray } from 'class-validator';
 
 @InputType()
 export class CreateDeveloperInput {
@@ -16,6 +16,10 @@ export class CreateDeveloperInput {
   @Field()
   email: string;
 
-  @Field(() => [Number])
+  @IsArray()
+  @Field(() => [Int])
+  @IsNotEmpty({
+    message: 'Roles is required',
+  })
   rolesId: number[];
 }

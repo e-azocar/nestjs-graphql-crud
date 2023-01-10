@@ -4,6 +4,7 @@ import { Project } from './project.entity';
 import { CreateProjectInput } from './dto/create-project.input';
 import { UpdateProjectInput } from './dto/update-project.input';
 import { AddDeveloperInput } from './dto/add-developer.input';
+import { ProjectStatus } from './types';
 
 @Resolver(() => Project)
 export class ProjectsResolver {
@@ -17,8 +18,12 @@ export class ProjectsResolver {
   }
 
   @Query(() => [Project], { name: 'projects' })
-  findAll() {
-    return this.projectsService.findAll();
+  findAll(
+    @Args('roleId', { type: () => Int, nullable: true }) roleId: number,
+    @Args('status', { type: () => ProjectStatus, nullable: true })
+    status: ProjectStatus,
+  ) {
+    return this.projectsService.findAll(roleId, status);
   }
 
   @Query(() => Project, { name: 'project' })

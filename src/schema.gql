@@ -33,7 +33,7 @@ type Developer {
 type Query {
   developers: [Developer!]!
   developer(id: Int!): Developer!
-  projects: [Project!]!
+  projects(roleId: Int, status: CreateProjectStatus): [Project!]!
   project(id: Int!): Project!
   roles: [Role!]!
   role(id: Int!): Role!
@@ -54,21 +54,21 @@ type Mutation {
 input CreateDeveloperInput {
   name: String!
   email: String!
-  rolesId: [Float!]!
+  rolesId: [Int!]!
 }
 
 input UpdateDeveloperInput {
   id: Int!
   name: String!
   email: String!
-  rolesId: [Float!]!
+  rolesId: [Int!]!
 }
 
 input CreateProjectInput {
   name: String!
   description: String
   status: CreateProjectStatus!
-  rolesId: [Float!]!
+  rolesId: [Int!]!
 }
 
 input AddDeveloperInput {
@@ -80,7 +80,7 @@ input UpdateProjectInput {
   name: String!
   description: String
   status: CreateProjectStatus!
-  rolesId: [Float!]!
+  rolesId: [Int!]!
   id: Int!
 }
 

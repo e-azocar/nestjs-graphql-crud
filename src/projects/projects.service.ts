@@ -7,6 +7,7 @@ import { AddDeveloperInput } from './dto/add-developer.input';
 import { CreateProjectInput } from './dto/create-project.input';
 import { UpdateProjectInput } from './dto/update-project.input';
 import { Project } from './project.entity';
+import { ProjectStatus } from './types';
 
 @Injectable()
 export class ProjectsService {
@@ -23,8 +24,11 @@ export class ProjectsService {
     return this.projectRepository.save(newProject);
   }
 
-  findAll() {
-    return this.projectRepository.find({
+  async findAll(roleId?: number, status?: ProjectStatus): Promise<Project[]> {
+    const projects = await this.projectRepository.find({
+      where: {
+        status,
+      },
       relations: {
         roles: true,
         developers: {
@@ -32,6 +36,10 @@ export class ProjectsService {
         },
       },
     });
+
+    return projects.filter((project) =>
+      roleId ? project.roles.some((role) => role.id === roleId) : true,
+    );
   }
 
   findOne(id: number) {
