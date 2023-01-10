@@ -1,0 +1,94 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Role {
+  id: Int!
+  name: String!
+}
+
+type Project {
+  id: Int!
+  name: String!
+  description: String
+  status: CreateProjectStatus!
+  roles: [Role!]
+  developers: [Developer!]
+}
+
+enum CreateProjectStatus {
+  OPEN
+  IN_PROGRESS
+  DONE
+}
+
+type Developer {
+  id: Int!
+  name: String!
+  email: String!
+  roles: [Role!]
+  projects: [Project!]
+}
+
+type Query {
+  developers: [Developer!]!
+  developer(id: Int!): Developer!
+  projects: [Project!]!
+  project(id: Int!): Project!
+  roles: [Role!]!
+  role(id: Int!): Role!
+}
+
+type Mutation {
+  createDeveloper(createDeveloperInput: CreateDeveloperInput!): Developer!
+  updateDeveloper(updateDeveloperInput: UpdateDeveloperInput!): Developer!
+  createProject(createProjectInput: CreateProjectInput!): Project!
+  addDeveloper(addDeveloperInput: AddDeveloperInput!): Project!
+  updateProject(updateProjectInput: UpdateProjectInput!): Project!
+  removeProject(id: Int!): Project!
+  createRole(createRoleInput: CreateRoleInput!): Role!
+  updateRole(updateRoleInput: UpdateRoleInput!): Role!
+  removeRole(id: Int!): Role!
+}
+
+input CreateDeveloperInput {
+  name: String!
+  email: String!
+  rolesId: [Float!]!
+}
+
+input UpdateDeveloperInput {
+  id: Int!
+  name: String!
+  email: String!
+  rolesId: [Float!]!
+}
+
+input CreateProjectInput {
+  name: String!
+  description: String
+  status: CreateProjectStatus!
+  rolesId: [Float!]!
+}
+
+input AddDeveloperInput {
+  id: Int!
+  developerId: Int!
+}
+
+input UpdateProjectInput {
+  name: String!
+  description: String
+  status: CreateProjectStatus!
+  rolesId: [Float!]!
+  id: Int!
+}
+
+input CreateRoleInput {
+  name: String!
+}
+
+input UpdateRoleInput {
+  name: String!
+  id: Int!
+}
