@@ -275,3 +275,48 @@ Open [localhost:3000/graphql](http://localhost:3000/graphql) on your browser and
       }
     }
     ```
+
+## Author
+
+<table style="width:100%">
+  <tr>
+    <td>
+        <div align="center">
+            <a href="./docs/img/photo.png" target="_blank" rel="author">
+                <img src="https://avatars.githubusercontent.com/u/61360270?v=4" style="border-radius: 10%; min-width: 100px;" alt="Emmanuel Azócar's Photo" width="200px">
+            </a>
+            <h2>
+                <a href="https://github.com/e-azocar" target="_blank" rel="author">
+                    Emmanuel Azócar
+                </a>
+            </h2>
+        </div>
+    </td>
+    <td>
+        <div align="center">
+            <a href="mailto:azocarmel@gmail.com" target="_blank" rel="author">
+                <img src="https://img.icons8.com/color/48/000000/message-squared.png" style="border-radius: 10%" alt="My GitHub" height="45px">
+                <h3>
+                    <a href="mailto:azocarmel@gmail.com">
+                      Email me to azocarmel@gmail.com
+                    </a>
+                </h3>
+            </a>
+            <a href="https://www.linkedin.com/in/e-azocar/" target="_blank" rel="author">
+                <img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="My Linkedin" height="45px">
+                <h3>
+                    Connect to my Linkedin
+                </h3>
+            </a>
+            <a href="https://github.com/e-azocar" target="_blank" rel="author">
+                <img src="https://img.icons8.com/glyph-neue/64/null/github.png" 
+			style="border-radius: 10%" alt="My GitHub" height="45px"
+		>
+                <h3>
+                    GitHub
+                </h3>
+            </a>
+        </div>
+    </td>
+  </tr>
+</table>
